@@ -1,4 +1,5 @@
-﻿using LeaderboardAPI.Repositories;
+﻿using LeaderboardAPI.Models;
+using LeaderboardAPI.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,6 +20,10 @@ namespace LeaderboardAPI.Controllers
             this.leaderboardService = leaderboardService;
         }
 
-
+        [HttpGet]
+        public ActionResult<List<Entry>> GetLeaderboard() 
+        {
+            return leaderboardService.getAllEntries();
+        }
     }
 }

@@ -29,6 +29,7 @@ namespace LeaderboardAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<ILeaderboardService, LeaderboardService>();
+            services.AddSingleton(Configuration.GetValue<string>("DefaultPageSize"));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

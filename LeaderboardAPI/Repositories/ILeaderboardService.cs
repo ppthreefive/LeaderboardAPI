@@ -6,6 +6,7 @@ namespace LeaderboardAPI.Repositories
     public interface ILeaderboardService
     {
         List<Entry> getAllEntries();
+        public int getTotalCount();
         List<Entry> getEntriesPaginated(int start, int count);
     }
 }

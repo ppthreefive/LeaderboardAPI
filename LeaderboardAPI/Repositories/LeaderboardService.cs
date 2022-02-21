@@ -24,6 +24,11 @@ namespace LeaderboardAPI.Repositories
             return this.entries;
         }
 
+        public int getTotalCount() 
+        {
+            return this.entries.Count();
+        }
+
         public List<Entry> getEntriesPaginated(int start, int count)
         {
             if ((start + count) > this.entries.Count() || start < 0 || start > this.entries.Count())

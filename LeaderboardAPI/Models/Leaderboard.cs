@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace LeaderboardAPI.Models
 {
-    public class Leaderboard
+    public record Leaderboard
     {
-        public List<Entry> entries { get; set; }
+        public List<Entry> entries { get; init; }
     }
 }

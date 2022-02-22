@@ -1,10 +1,12 @@
 ﻿using LeaderboardAPI.Dtos;
 using LeaderboardAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace LeaderboardAPI.Repositories
 {
@@ -19,7 +21,7 @@ namespace LeaderboardAPI.Repositories
             this.entries = JsonSerializer.Deserialize<Leaderboard>(json).entries;
         }
 
-        public LeaderboardDto GetEntriesHelper(int? page, int? count, int defaultPageSize) 
+        public async Task<ActionResult<LeaderboardDto>> GetEntriesHelper(int? page, int? count, int defaultPageSize) 
         {
             int total = this.entries.Count();
             int remainder, totalPages, start;

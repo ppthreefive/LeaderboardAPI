@@ -26,43 +26,17 @@ namespace LeaderboardAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<LeaderboardDto> GetLeaderboard([FromQuery] string page, [FromQuery] string count) 
+        public async Task<ActionResult<LeaderboardDto>> GetLeaderboard([FromQuery] int? page, [FromQuery] int? count) 
         {
-            // TODO: Clean up the controller, can probably move some of this logic to the service
-            int total = leaderboardService.getTotalCount();
+            LeaderboardDto data = leaderboardService.GetEntriesHelper(page, count, this.defaultPageSize);
 
-            if (String.IsNullOrEmpty(page) && String.IsNullOrEmpty(count))
+            if (data == null)
             {
-                int remainder = total % this.defaultPageSize;
-                int totalPages = total / this.defaultPageSize;
-                if (remainder != 0)
-                {
-                    totalPages++;
-                }
-
-                return new LeaderboardDto(leaderboardService.getEntriesPaginated(0, this.defaultPageSize), 1, this.defaultPageSize, totalPages);
+                return NotFound();
             }
-            else
+            else 
             {
-                int pageSize = int.Parse(count);
-                int pageNum = int.Parse(page) - 1;
-                int start = pageSize * pageNum;
-                int remainder = total % pageSize;
-                int totalPages = total / pageSize;
-
-                if (remainder != 0)
-                {
-                    totalPages++;
-                }
-
-                if ((pageNum + 1) == totalPages)
-                {
-                    start = (pageNum - 1) * pageSize;
-
-                    return new LeaderboardDto(leaderboardService.getEntriesPaginated(start, remainder), pageNum, pageSize, totalPages);
-                }
-
-                return new LeaderboardDto(leaderboardService.getEntriesPaginated(start, pageSize), pageNum + 1, pageSize, totalPages);
+                return data;
             }
         }
     }

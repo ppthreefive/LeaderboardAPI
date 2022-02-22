@@ -11,13 +11,13 @@ namespace LeaderboardAPI.Dtos
         public List<Entry> entries { get; set; }
         public int page { get; set; }
         public int totalPages { get; set; }
-        public int count { get; set; }
+        public int pageSize { get; set; }
 
-        public LeaderboardDto(List<Entry> entries, int page, int count, int totalPages)
+        public LeaderboardDto(List<Entry> entries, int page, int pageSize, int totalPages)
         {
             this.entries = entries;
             this.page = page;
-            this.count = count;
+            this.pageSize = pageSize;
             this.totalPages = totalPages;
         }
     }

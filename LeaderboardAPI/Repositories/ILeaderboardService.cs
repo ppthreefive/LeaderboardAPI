@@ -1,6 +1,4 @@
 ﻿using LeaderboardAPI.Dtos;
-using LeaderboardAPI.Models;
-using System.Collections.Generic;
 
 namespace LeaderboardAPI.Repositories
 {

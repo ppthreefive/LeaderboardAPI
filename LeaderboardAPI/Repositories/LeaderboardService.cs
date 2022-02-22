@@ -104,10 +104,24 @@ namespace LeaderboardAPI.Repositories
 
             if (this.entries.Count() <= count)
             {
-                return new LeaderboardDto(this.entries, pageNum, pageSize, totalPages);
+                var allEntries = this.entries.Select(entry => new EntryDto
+                { 
+                    index = entry.index,
+                    username = entry.username,
+                    score = entry.score
+                });
+
+                return new LeaderboardDto(allEntries, pageNum, pageSize, totalPages);
             }
 
-            return new LeaderboardDto(this.entries.GetRange(start, count), pageNum, pageSize, totalPages);
+            var subEntries = this.entries.GetRange(start, count).Select(entry => new EntryDto 
+            {
+                index = entry.index,
+                username = entry.username,
+                score = entry.score
+            });
+
+            return new LeaderboardDto(subEntries, pageNum, pageSize, totalPages);
         }
     }
 }

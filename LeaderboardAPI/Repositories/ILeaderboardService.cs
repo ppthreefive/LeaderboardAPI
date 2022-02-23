@@ -6,7 +6,7 @@ namespace LeaderboardAPI.Repositories
 {
     public interface ILeaderboardService
     {
-        public Task<ActionResult<LeaderboardDto>> GetEntriesHelper(int? page, int? count, int defaultPageSize);
-        public LeaderboardDto getEntriesPaginated(int start, int count, int pageNum, int pageSize, int totalPages);
+        public Task<ActionResult<LeaderboardDto>> GetEntriesHelperAsync(int? page, int? count, int defaultPageSize);
+        public Task<LeaderboardDto> GetEntriesPaginatedAsync(int start, int count, int pageNum, int pageSize, int totalPages);
     }
 }

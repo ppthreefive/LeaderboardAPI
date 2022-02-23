@@ -19,9 +19,9 @@ namespace LeaderboardAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<LeaderboardDto>> GetLeaderboard([FromQuery] int? page, [FromQuery] int? count) 
+        public async Task<ActionResult<LeaderboardDto>> GetLeaderboardAsync([FromQuery] int? page, [FromQuery] int? count) 
         {   
-            var data = await leaderboardService.GetEntriesHelper(page, count, this.defaultPageSize);
+            var data = await leaderboardService.GetEntriesHelperAsync(page, count, this.defaultPageSize);
 
             if (data == null)
             {

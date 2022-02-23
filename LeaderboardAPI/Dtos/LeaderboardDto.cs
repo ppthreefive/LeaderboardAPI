@@ -3,21 +3,12 @@ using System.Linq;
 
 namespace LeaderboardAPI.Dtos
 {
-    public class LeaderboardDto
+    public record LeaderboardDto
     {
-        public IEnumerable<EntryDto> entries { get; set; }
-        public int page { get; set; }
-        public int totalPages { get; set; }
-        public int pageSize { get; set; }
-        public int subsetCount { get; set; }
-
-        public LeaderboardDto(IEnumerable<EntryDto> entries, int page, int pageSize, int totalPages)
-        {
-            this.entries = entries;
-            this.page = page;
-            this.pageSize = pageSize;
-            this.totalPages = totalPages;
-            this.subsetCount = entries.Count();
-        }
+        public IEnumerable<EntryDto> entries { get; init; }
+        public int page { get; init; }
+        public int totalPages { get; init; }
+        public int pageSize { get; init; }
+        public int subsetCount { get; init; }
     }
 }

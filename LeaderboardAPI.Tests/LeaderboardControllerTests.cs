@@ -1,3 +1,9 @@
+/* Author: Phillip Pham
+ * Date: 02/20/22
+ * Description: This is the controller xUnit tests that I have made to test the branch coverage of our single controller method.
+ *  Note that I am using the FakeItEasy package to help mock data more easily.
+ */
+
 using FakeItEasy;
 using LeaderboardAPI.Controllers;
 using LeaderboardAPI.Dtos;

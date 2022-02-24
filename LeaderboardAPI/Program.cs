@@ -1,11 +1,10 @@
+/* Author: Phillip Pham
+ * Date: 02/20/22
+ * Description: Program entry point.
+ */
+
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LeaderboardAPI
 {

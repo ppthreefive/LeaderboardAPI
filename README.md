@@ -73,15 +73,17 @@ An invalid request will yield this response:
 }
 ```
 
-Since this challenge is not required to actually implement a class with Redis integration, I have decided to load static data from the "Resources" folder named "leaderboard_data.json".
+#### More design thoughts and info:
+
+- Since this challenge is not required to actually implement a class with Redis integration, I have decided to load static data from the "Resources" folder named "leaderboard_data.json".
 That means my service/in-memory-repository will be loading that file and deserializing it into a leaderboard record that is defined in the "Models" folder. 
 
-I believe that optimally, a Redis integrated class could just use a command such as 'ZREVRANGEBYSCORE leaderboardKey start count' and would require less logic to be written in the repository/service classes.
+- I believe that optimally, a Redis integrated class could just use a command such as 'ZREVRANGEBYSCORE leaderboardKey start count' and would require less logic to be written in the repository/service classes.
 
-The service file will then package that processed information into a LeaderboardDto record which will be returned. The LeaderboardDto has additional properties in it that is processed in the service, 
+- The service file will then package that processed information into a LeaderboardDto record which will be returned. The LeaderboardDto has additional properties in it that is processed in the service, 
 which is in line with the data contract described above with the example response.
 
-Finally, the controller is dependecy injected with an interface of that service/in-memory-repository mentioned above, so that the repository is only generated once and passed to the controller. 
+- Finally, the controller is dependecy injected with an interface of that service/in-memory-repository mentioned above, so that the repository is only generated once and passed to the controller. 
 The default page size is also read from the "appsettings.json" file and is passed to the controller as well.
 
 ##### Unit Tests:

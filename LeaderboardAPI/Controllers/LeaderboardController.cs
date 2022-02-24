@@ -18,6 +18,7 @@ namespace LeaderboardAPI.Controllers
 {
     [Route("api/leaderboard")]
     [ApiController]
+    [Produces("application/json")]
     public class LeaderboardController : ControllerBase
     {
         private readonly ILeaderboardService leaderboardService;
